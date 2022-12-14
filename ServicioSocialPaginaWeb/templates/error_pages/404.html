@@ -1,6 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
-    <div class="jumbotron">
+    <!-- <div class="jumbotron">
         <h1>404 PAGE NOT FOUND</h1>
+    </div> -->
+    <div id="not" class="container">
+        <h2>Opps! Page not found.</h2>
+        <h1>404</h1>
+        <p>We can't find the page you're looking for.</p>
+        <a href="{{url_for('core.index')}}">Go back home</a>
     </div>
 {% endblock %}
