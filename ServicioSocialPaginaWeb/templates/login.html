@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="row justify-content-md-center my-5" ">
+    <div class=" col-md-5 text-center">
+    <form method="POST">
+        {{form.hidden_tag()}}
+        {{form.email.label}}<br>{{form.email}}<br>
+        {{form.password.label}}<br>{{form.password}}<br><br>
+        {{form.submit(class="btn btn-primary")}}
+    </form>
+</div>
+</div>
+
+
+{% endblock %}
