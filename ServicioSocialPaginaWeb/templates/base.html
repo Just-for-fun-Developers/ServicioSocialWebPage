@@ -6,6 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Servicio Social</title>
+  <link rel="stylesheet" href="{{ url_for('static',filename='styles/header.css') }}">
   <link rel="stylesheet" href="{{ url_for('static',filename='styles/basepage.css') }}">
   <meta name="author" content="'''">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine">
@@ -18,38 +19,105 @@
 
 <body>
 
-  <nav class="navbar navbar-expand-lg navbar-light bg-light px-0 py-3">
-    <div class="container-xl">
-      <!-- Logo -->
-      <a class="navbar-brand" href="{{url_for('core.index')}}">
-        <img src="{{ url_for('static',filename='images/logo_2.svg') }}" height="50%" width="50%" class="h-7" alt="...">
-      </a>
-      <!-- Navbar toggle -->
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
-        aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <!-- Collapse -->
-      <div class="collapse navbar-collapse" id="navbarCollapse">
-        <!-- Nav -->
-        <div class="navbar-nav mx-lg-auto">
-          <a class="nav-item nav-link active" href="{{url_for('core.index')}}" aria-current="page">Home</a>
-          <a class="nav-item nav-link" href="{{url_for('services.news')}}">News</a>
-          <a class="nav-item nav-link" href="{{url_for('core.about')}}">About</a>
+  <!-- <div class="main">
+    <header class="header-top">
+        <div class="d-flex mb-3 wrap">
+            <div class="me-auto p-2">
+                <img src="{{ url_for('static',filename='images/logo_2.svg') }}" alt="">
+            </div>
+            
+            <div class="p-2 btn-menu" id="btn-menu">
+                <span class="fa-solid fa-bars"></span>
+                
+            </div>
+            <div class="p-2" id="me-text">
+                <span class="menu-text d-none d-sm-block">Menu</span> 
+            </div>
 
-          {% if current_user.is_authenticated %}
+        </div>
+    </header> -->
+    
+    
+    <!-- MENU FULL SCREEN -->
+    
+    <!-- <div class="full-menu">
+        <div class="parent-element d-flex justify-content-center align-items-center">
+            <div class="container">
+                <div class="btn-cerrar d-flex justify-content-end">
+                    <span class="p-2 d-none d-sm-block">Close</span>
+                    <i class="p-2 fa-solid fa-xmark"></i>
+                </div>
+            </div>
+        </div>
+        <div class="wrap">
+            <nav class="navegacion">
+                <ul class="menu-principal">
+                    <li><a href="{{url_for('core.index')}}">Home</a></li>
+                    <li><a href="{{url_for('services.news')}}">News</a></li>
+                    <li><a href="{{url_for('core.about')}}">Acerca de</a></li>
+                    <li><a href="#">Convocatoria</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div> -->
+
+
+<nav class="navbar bg-light fixed-top">
+  <div class="container-fluid container-sm">
+    <!-- <a class="navbar-brand" href="#">Offcanvas navbar</a> -->
+    <a href="">
+      <img src="{{ url_for('static',filename='images/logo_2.svg') }}" alt="Logo Servicio Social" style="height:42px">
+    </a>
+    <img src="{{ url_for('static',filename='images/Logo_UNAP.png') }}" alt="logo unap" style="height:60px" class="d-none d-sm-block">
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+      <!-- <div class="container col align-self-center"><i class="fa fa-bars"></i> Menu</div> -->
+      <div class="container d-flex">
+        <i class="fa fa-bars"></i>
+        <span class="d-none d-sm-block" style="margin-left: 5px;">Menu</span>
+      </div>
+
+      <!-- <span class="navbar-toggler-icon col align-self-center"></span>
+      <span class="navbar-toggler-text col align-self-center">Menu</span>
+      <div class="d-none d-sm-block col align-self-center">Menu</div> -->
+
+    </button>
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+      <div class="offcanvas-header container-sm">
+        <h5 class="offcanvas-title" id="offcanvasNavbarLabel"></h5>
+          <button  data-bs-dismiss="offcanvas" aria-label="Close" class="btn cerrar-btn rounded-circle">
+            <i class="fa fa-close"></i>
+          </button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="{{url_for('core.index')}}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{url_for('services.news')}}">News</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{url_for('core.about')}}">Acerca de</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Convocatoria</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+
+          <!-- {% if current_user.is_authenticated %}
           <a class="nav-item nav-link" href="{{url_for('users.logout')}}">Log Out</a>
           <a class="nav-item nav-link" href="{{url_for('users.account')}}">Account</a>
           <a class="nav-item nav-link" href="{{url_for('news_posts.create_post')}}">Create Post</a>
           {% else %}
           <a class="nav-item nav-link" href="{{url_for('users.login')}}">Log In</a>
           <a class="nav-item nav-link" href="{{url_for('users.register')}}">Register</a>
-          {% endif %}
+          {% endif %} -->
 
-        </div>
-      </div>
-    </div>
-  </nav>
   {% block content%}
 
 
@@ -94,11 +162,14 @@
       </div>
     </footer>
   </div>
+  
 
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
     crossorigin="anonymous"></script>
+  <script src="{{ url_for('static', filename='js/jquery-3.6.3.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/header.js') }}"></script>
 </body>
 
 </html>
