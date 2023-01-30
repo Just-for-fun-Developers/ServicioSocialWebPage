@@ -1,7 +1,8 @@
 .footer-dark {
-    padding:50px 0;
+    padding: 30px 0;
     color:#f0f9ff;
     background-color:#282d32;
+    text-align: center;
   }
   
   .footer-dark h3 {
@@ -53,6 +54,7 @@
   
   .footer-dark .item.social {
     text-align:center;
+    margin-top: 55px;
   }
   
   @media (max-width:991px) {
@@ -74,6 +76,7 @@
     margin:0 8px;
     color:#fff;
     opacity:0.75;
+    
   }
   
   .footer-dark .item.social > a:hover {
@@ -142,4 +145,18 @@
 100%{
     transform: scale(1);
 }
+}
+.img-footer {
+  margin: 5%;
+
+}
+
+.img_arrow_right_news {
+  width: 30px;
+  height: 30px;
+}
+
+.a-more-info {
+  color: #000000;
+  text-decoration: none;
 }
