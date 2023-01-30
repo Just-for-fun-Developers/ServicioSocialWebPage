@@ -1,0 +1,97 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+#intro {
+  background-image: url("https://mdbootstrap.com/img/new/fluid/city/018.jpg");
+  height: 100vh;
+  width: 100% !important;
+  background-size: cover;
+  background-position: center;
+}
+.mask{
+  height: 100%;
+}
+
+.separador{
+    margin-top: 150px;
+}
+
+.container-fluid{
+  width: 90% !important;
+}
+.container-fluid .navbar-toggler{
+  height: 60px;
+}
+
+.offcanvas{
+  width: 100% !important;
+  background-image: url("../images/fondo_menu_v2.png") !important;
+  background-color:#000000;
+  background-size: cover;
+  background-position: center;
+}
+
+.offcanvas .offcanvas-header .cerrar-btn{
+  font-size: 1.25rem;
+  color: rgba(255, 255, 255,0.55);
+  border-color: rgba(255, 255, 255,0.55);
+  padding: 10px 20px;
+  transition: .3s;
+}
+.offcanvas .offcanvas-header .cerrar-btn:hover{
+  background-color: rgba(255, 255, 255,0.9);
+  font-size: 1.25rem;
+  color: rgba(0, 0, 0,0.55);
+  border-color: rgba(0, 0, 0,0.55);
+  padding: 10px 20px;
+}
+
+.offcanvas .nav-item .nav-link{
+  color: #ffffff;
+}
+.offcanvas-body{
+  text-align: center;
+  font-size: 50px;
+}
+@media screen and (max-width: 750px){
+	/*Full menu*/
+	.offcanvas-body{
+		font-size: 30px;
+	}
+}
+
+.offcanvas-body ul li a{
+  font-family: 'Century Gothic';
+  text-decoration: none;
+  position: relative;
+  display: inline-block;
+}
+
+.offcanvas-body ul li a::before{
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  border-radius: 4px;
+  background-color: #ffffff;
+  left: 0;
+  bottom: 0;
+  top:80%;
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform .3s ease-in-out;
+}
+
+.offcanvas-body ul li a:hover::before{
+  color: #be8c21;
+  transform-origin: left;
+  transform: scaleX(1);
+}
+.offcanvas-body {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-body {
+  justify-content: center;
+}
