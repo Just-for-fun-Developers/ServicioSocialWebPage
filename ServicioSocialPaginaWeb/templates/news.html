@@ -16,23 +16,20 @@
   </div>
   <div class="container">
     <div class="row new-page">
-      <h3>ULTIMOS EVENTOS</h3>
-      <div class="col-md-3 events">
-        <div class="card text-bg-dark mb-3" style="max-width: 18rem;">
-          <div class="card-header">Convocatoria de Comedor</div>
-          <div class="card-body">
-            <h5 class="card-title">12 p.m.</h5>
-            <p class="card-text">Se realizara en las mismas oficinas de servicio social</p>
-          </div>
-        </div>
-        <div class="card text-bg-dark mb-3" style="max-width: 18rem;">
-          <div class="card-header">Convocatoria de Comedor</div>
-          <div class="card-body">
-            <h5 class="card-title">12 p.m.</h5>
-            <p class="card-text">Se realizara en las mismas oficinas de servicio social</p>
-          </div>
-        </div>
 
+      <div class="col-md-3 events">
+        <h3>ULTIMOS EVENTOS</h3>
+        {% for event in news_events %}
+        <a href="{{url_for('news_posts.news_event', news_event_id=event.id)}}">
+          <div class="card text-bg-dark mb-3" style="max-width: 18rem;">
+            <div class="card-header">{{event.title}}</div>
+            <div class="card-body">
+              <h5 class="card-title">{{event.time}}</h5>
+              <p class="card-text">{{event.place}}</p>
+            </div>
+          </div>
+        </a>
+        {% endfor %}
       </div>
 
       <div class="col-md-9">

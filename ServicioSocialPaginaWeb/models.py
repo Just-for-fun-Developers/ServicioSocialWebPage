@@ -22,6 +22,7 @@ class User(db.Model, UserMixin):
     password_hash = db.Column(db.String(128))
 
     posts = db.relationship('NewsPost', backref='author', lazy=True)
+    events = db.relationship('NewsEvent', backref='author', lazy=True)
 
     def __init__(self, email, username, password):
         self.email = email
@@ -51,3 +52,22 @@ class NewsPost(db.Model):
 
     def __repr__(self) -> str:
         return f"Post ID: {self.id} -- Date: {self.date} --- {self.title}"
+
+class NewsEvent(db.Model):
+    users = db.relationship(User)
+    
+    id = id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    date = db.Column(db.DateTime , nullable=False, default=datetime.utcnow)
+    title = db.Column(db.String(140), nullable=False)
+    time = db.Column(db.String(60), nullable=False)
+    place = db.Column(db.Text, nullable=False)
+
+    def __init__(self, title, time, place, user_id):
+        self.title = title
+        self.time = time
+        self.place = place
+        self.user_id = user_id
+
+    def __repr__(self) -> str:
+        return f"Event ID: {self.id} -- Date: {self.date} --- {self.title}"

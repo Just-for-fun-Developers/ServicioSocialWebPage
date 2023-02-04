@@ -4,7 +4,8 @@
 }
 
 /* div events */
-.events{  
+.events a{
+    text-decoration: none;
 }
 
 /* div news-events */
@@ -32,8 +33,7 @@ div .news {
     transition: .5s ease;
 }
 
-div .new-main{
-}
+
 
 div .news:hover {
     background: #dedede;
