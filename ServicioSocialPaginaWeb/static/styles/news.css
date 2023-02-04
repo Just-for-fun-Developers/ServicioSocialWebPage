@@ -1,0 +1,109 @@
+/* div container */
+.container .new-page{
+    margin-top: 30px;
+}
+
+/* div events */
+.events{  
+}
+
+/* div news-events */
+div .news-events {
+    font-family: Dinamit;
+}
+
+.news-events h3,
+h4 {
+    font-weight: bold;
+}
+
+.place-event p::before {
+    content: '✵';
+}
+
+/* Bloque del div principal news */
+div .news {
+    border: none;
+    background: #efefef;
+    width: 100%;
+    
+    margin-left: auto;
+    margin-right: auto;
+    transition: .5s ease;
+}
+
+div .new-main{
+}
+
+div .news:hover {
+    background: #dedede;
+}
+
+
+
+
+/* div card-media */
+.news .card-media {
+    
+    overflow: hidden;
+}
+
+.card-image {
+    transition: transform .5s ease;
+}
+
+div .news:hover .card-image {
+    transform: scale(1.2);
+}
+
+/* div card-body */
+.news .card-body {
+    padding-top: 48px;
+    padding-left: 32px;
+    padding-right: 32px;
+    padding-bottom: 0px;
+}
+
+.card-body a {
+    text-decoration: none;
+    color: black;
+    background-image: linear-gradient(black, black);
+    background-position: 0% 100%;
+    background-repeat: no-repeat;
+    background-size: 0% 2px;
+    transition: background-size .3s;
+}
+
+
+div .news:hover a {
+    color: black;
+    background-size: 100% 2px;
+}
+
+/* div card-go */
+.news .card-go {
+    padding-left: 10%;
+    padding-right: 10%;
+    margin-top: 32px;
+    margin-bottom: 32px;
+}
+
+.card-go a {
+    color: black;
+    font-family: arial;
+    text-decoration: none;
+
+
+}
+
+.card-go a:hover {
+    color: black;
+}
+
+/* div news-nav */
+
+.news-nav {
+    width: 100px;
+    margin-left: auto;
+    margin-right: auto;
+}
