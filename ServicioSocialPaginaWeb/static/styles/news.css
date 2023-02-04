@@ -49,6 +49,7 @@ div .news:hover {
 }
 
 .card-image {
+    width: 100%;
     transition: transform .5s ease;
 }
 
