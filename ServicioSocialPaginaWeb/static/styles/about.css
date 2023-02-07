@@ -1,0 +1,80 @@
+.mask-about{
+    height: 100%;
+}
+.imagen-principal{
+    background-image: url("../images/about_1.png");
+    height: 700px;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+}
+.contenedor-texto{
+    height: 700px;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+div .texto-margen{
+    
+    padding-top: 150px;
+    height: 700px;
+    padding-bottom: 100px;
+}
+.imagen-principal-izq{
+    color: white;
+    padding-top: 140px;
+    font-size: 55px;
+    text-align: center;
+    border-right: 2px solid white;
+}
+.imagen-principal-der{
+    color: white;
+    padding-top: 150px;
+    font-size: 25px;
+    text-align: center;
+}
+.margenes{
+    margin: 25px 0;
+}
+.texto-superior{
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 56px;
+    font-family: 'Poppins', sans-serif;
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+.texto-contenedor-inf-img{
+    font-size: 56px;
+    font-family: 'DM Serif Display', serif;
+    text-align: center;
+    font-weight: bold;
+}
+.contenedor-inf-img{
+    height: 400px;
+    width: 100%;
+    /* background-image: url("../images/prueba1.png"); */
+    background-size: 100% 100%;
+    
+}
+.inf-img-1{
+    height: 100%;
+    width: 100%;
+}
+.columna-texto{
+    height: 400px;
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+.text-rojo-img{
+    font-size: 48px;
+    font-family: 'DM Serif Display', serif;
+    font-family: 'Lora', serif;
+    color: #a51c30;
+    font-weight: bold;
+}
+.text-negro-img{
+    font-size: 18px;
+    font-family: 'Lora', serif;
+    color: #1e1e1e;
+}
