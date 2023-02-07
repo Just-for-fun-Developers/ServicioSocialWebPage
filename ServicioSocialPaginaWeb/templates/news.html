@@ -3,36 +3,39 @@
 
 <!-- <div class="separador"></div> -->
 
-<main class="my-3">
-  <div id="intro" class="bg-image shadow-2-strong">
-    <div class="mask" style="background-color: rgba(102, 102, 102, 0.8);">
-      <div class="container d-flex align-items-center justify-content-center text-center h-100">
-        <div class="text-white">
-          <h1 class="mb-3">Learn Bootstrap 5 with MDB</h1>
-          <h5 class="mb-4">Best & free guide of responsive web design</h5>
+<main class="my-3 news-font">
+  <div class="imagen-principal mask-about">
+    <div class="contenedor-texto">
+      <div class="row texto-margen justify-content-center">
+        <div class="col-md-4 imagen-principal-izq">
+          Noticias de la Subunidad de Servicio Social
+        </div>
+        <div class="col-md-4 imagen-principal-der">
+          Harvard is at the frontier of academic and intellectual discovery. Those who venture here—to learn, research,
+          teach, work, and grow—join nearly four centuries of students and scholars in the pursuit of truth, knowledge,
+          and a better world.
         </div>
       </div>
     </div>
   </div>
   <div class="container">
     <div class="row new-page">
-      <h3>ULTIMOS EVENTOS</h3>
-      <div class="col-md-3 events">
-        <div class="card text-bg-dark mb-3" style="max-width: 18rem;">
-          <div class="card-header">Convocatoria de Comedor</div>
-          <div class="card-body">
-            <h5 class="card-title">12 p.m.</h5>
-            <p class="card-text">Se realizara en las mismas oficinas de servicio social</p>
-          </div>
-        </div>
-        <div class="card text-bg-dark mb-3" style="max-width: 18rem;">
-          <div class="card-header">Convocatoria de Comedor</div>
-          <div class="card-body">
-            <h5 class="card-title">12 p.m.</h5>
-            <p class="card-text">Se realizara en las mismas oficinas de servicio social</p>
-          </div>
-        </div>
 
+      <div class="col-md-3 events">
+        <h3>ULTIMOS EVENTOS</h3>
+        {% for event in news_events %}
+        <a href="{{url_for('news_posts.news_event', news_event_id=event.id)}}">
+          <div class="card text-bg-dark mb-3" style="max-width: 18rem;">
+            <div class="card-header">
+              <h5>{{event.title}}</h5>
+            </div>
+            <div class="card-body">
+              <h6 class="card-title">{{event.time}}</h6>
+              <p class="card-text">{{event.place}}</p>
+            </div>
+          </div>
+        </a>
+        {% endfor %}
       </div>
 
       <div class="col-md-9">
@@ -44,13 +47,20 @@
           <div class="col">
             <div class="card mb-3 news">
               <div class="row g-0 new-main">
-                <div class="col-md-7 card-media">
-                  <img src="https://picsum.photos/600/300" class="img-fluid rounded-start card-image" alt="...">
+                <div class="col-md-7 card-media-main">
+                  <!-- <img src="https://picsum.photos/600/300" class="img-fluid rounded-start card-image" alt="..."> -->
+                  <a href="{{url_for('news_posts.news_post', news_post_id=post.id)}}">
+                    <img src="{{ url_for('static',filename='image_news/'+post.image1) }}"
+                      class="img-fluid rounded-start card-image" alt="...">
+                  </a>
                 </div>
-                <div class="col-md-5">
-                  <div class="card-body">
-                    <h5 class="card-title"><a href="">{{post.title}}</a></h5>
-                    <p class="card-text">Published on: {{post.date.strftime('%Y-%m-%d')}}</p>
+
+                <div class="col-md-5 card-body-main">
+                  <div class="card-body ">
+                    <h5 class="card-title hover-underline-animation"><a
+                        href="{{url_for('news_posts.news_post', news_post_id=post.id)}}">{{post.title}}</a></h5>
+                    <p class="card-text">{{post.description}}</p>
+                    <p class="card-text">Publicado el: {{post.date.strftime('%Y-%m-%d')}}</p>
 
                   </div>
                   <div class="card-go">
@@ -68,23 +78,38 @@
         {% endif %}
         <div class="row my-3 justify-content-md-center">
           {% for post in news_posts.items[1:] %}
+
           <div class="col-md-6 my-3">
+
             <div class="card news">
               <div class="card-media">
-                <img src="https://picsum.photos/400/300" class="card-image" alt="...">
+                <a href="{{url_for('news_posts.news_post', news_post_id=post.id)}}">
+                  <img src="{{ url_for('static',filename='image_news/'+post.image1) }}" class="card-image" alt="...">
+                </a>
+
               </div>
-              <div class="card-body">
-                <a class="card-title">{{post.title}}</a>
-                <p>Published on: {{post.date.strftime('%Y-%m-%d')}}</p>
+              <div class="row new-normal">
+
+                <div class=" card-body">
+                  <h5 class="card-title"><a
+                      href="{{url_for('news_posts.news_post', news_post_id=post.id)}}">{{post.title}}</a></h5>
+                  <p class="card-text">{{post.description}}</p>
+                  <p>Publicado el: {{post.date.strftime('%Y-%m-%d')}}</p>
+                </div>
+
+                <div class="card-go">
+                  <a href="{{url_for('news_posts.news_post', news_post_id=post.id)}}"><img
+                      src=" {{ url_for('static',filename='images/circle-arrow-right-solid.svg' ) }}" alt="right arrow"
+                      class="img_arrow_right_news"> Conocer más acerca
+                    de</a>
+                </div>
               </div>
-              <div class="card-go">
-                <a href="{{url_for('news_posts.news_post', news_post_id=post.id)}}"><img
-                    src=" {{ url_for('static',filename='images/circle-arrow-right-solid.svg' ) }}" alt="right arrow"
-                    class="img_arrow_right_news"> Conocer más acerca
-                  de</a>
-              </div>
+
             </div>
+
+
           </div>
+
           {% endfor %}
         </div>
       </div>

@@ -67,7 +67,7 @@
     <nav class="navbar bg-light fixed-top">
       <div class="container-fluid container-sm">
         <!-- <a class="navbar-brand" href="#">Offcanvas navbar</a> -->
-        <a href="">
+        <a href="{{url_for('core.index')}}">
           <img src="{{ url_for('static',filename='images/logo_2.svg') }}" alt="Logo Servicio Social"
             style="height:42px">
         </a>
@@ -107,6 +107,21 @@
               <li class="nav-item">
                 <a class="nav-link" href="#">Convocatoria</a>
               </li>
+              {% if current_user.is_authenticated %}
+              <li class="nav-item">
+                <a class="nav-link" href="{{url_for('news_posts.create_post')}}">Create Post</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{url_for('news_posts.create_event')}}">Create Event</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{{url_for('users.account')}}">Account</a>
+              </li>
+              <hr>
+              <li class="nav-item">
+                <a class="nav-link" href="{{url_for('users.logout')}}">Log Out</a>
+              </li>
+              {% endif %}
             </ul>
           </div>
         </div>
@@ -135,7 +150,7 @@
       <footer>
         <div class="container">
           <div class="row">
-            <div class="col-sm-6 col-md-4 item ">
+            <div class="col-sm-6 col-md-4 item-footer ">
               <h3>Servicios</h3>
               <ul>
                 <li><a href="#">Web design</a></li>
@@ -143,10 +158,11 @@
                 <li><a href="#">Hosting</a></li>
               </ul>
             </div>
-            <div class="col-sm-6 col-md-4 item">
-              <img src="{{ url_for('static',filename='images/Logo_UNAP.png') }}" alt="logo footer" class="img-footer">
+            <div class="col-sm-6 col-md-4">
+              <img src="{{ url_for('static',filename='images/logo_v2_servicio social.png') }}" alt="logo footer"
+                class="img-footer">
             </div>
-            <div class="col-sm-6 col-md-4 item">
+            <div class="col-sm-6 col-md-4 item-footer">
               <h3>About</h3>
               <ul>
                 <li><a href="#">Área del trabajador</a></li>
