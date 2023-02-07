@@ -15,8 +15,7 @@ class User(db.Model, UserMixin):
     __tablename__ = 'users'
 
     id = db.Column(db.Integer, primary_key=True)
-    profile_image = db.Column(
-        db.String(64), nullable=False, default='default_profile.png')
+    profile_image = db.Column(db.String(64), nullable=False, default='default_profile.png')
     email = db.Column(db.String(64), unique=True, index=True)
     username = db.Column(db.String(64), unique=True, index=True)
     password_hash = db.Column(db.String(128))
@@ -43,10 +42,14 @@ class NewsPost(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     date = db.Column(db.DateTime , nullable=False, default=datetime.utcnow)
     title = db.Column(db.String(140), nullable=False)
+    image1 = db.Column(db.String(64), nullable=False, default='default_profile.png')
+    description = db.Column(db.Text, nullable=False)
     text = db.Column(db.Text, nullable=False)
 
-    def __init__(self, title, text, user_id):
+    def __init__(self, title,description,imagen1, text, user_id):
         self.title = title
+        self.description = description
+        self.image1 = imagen1
         self.text = text
         self.user_id = user_id
 

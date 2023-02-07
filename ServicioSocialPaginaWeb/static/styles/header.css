@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
 
 #intro {
@@ -8,66 +7,77 @@
   background-size: cover;
   background-position: center;
 }
-.mask{
+
+.mask {
   height: 100%;
 }
 
-.separador{
-    margin-top: 150px;
+.separador {
+  margin-top: 150px;
 }
 
-.container-fluid{
+.container-fluid {
   width: 90% !important;
 }
-.container-fluid .navbar-toggler{
+
+.container-fluid .navbar-toggler {
   height: 60px;
 }
 
-.offcanvas{
+.offcanvas {
   width: 100% !important;
   background-image: url("../images/fondo_menu_v2.png") !important;
-  background-color:#000000;
+  background-color: #000000;
   background-size: cover;
   background-position: center;
 }
 
-.offcanvas .offcanvas-header .cerrar-btn{
+.offcanvas .offcanvas-header .cerrar-btn {
   font-size: 1.25rem;
-  color: rgba(255, 255, 255,0.55);
-  border-color: rgba(255, 255, 255,0.55);
+  color: rgba(255, 255, 255, 0.55);
+  border-color: rgba(255, 255, 255, 0.55);
   padding: 10px 20px;
   transition: .3s;
 }
-.offcanvas .offcanvas-header .cerrar-btn:hover{
-  background-color: rgba(255, 255, 255,0.9);
+
+.offcanvas .offcanvas-header .cerrar-btn:hover {
+  background-color: rgba(255, 255, 255, 0.9);
   font-size: 1.25rem;
-  color: rgba(0, 0, 0,0.55);
-  border-color: rgba(0, 0, 0,0.55);
+  color: rgba(0, 0, 0, 0.55);
+  border-color: rgba(0, 0, 0, 0.55);
   padding: 10px 20px;
 }
 
-.offcanvas .nav-item .nav-link{
+.offcanvas .nav-item .nav-link {
   color: #ffffff;
 }
-.offcanvas-body{
+
+.offcanvas-body {
   text-align: center;
   font-size: 50px;
 }
-@media screen and (max-width: 750px){
-	/*Full menu*/
-	.offcanvas-body{
-		font-size: 30px;
-	}
+
+@media screen and (max-width: 750px) {
+
+  /*Full menu*/
+  .offcanvas-body {
+    font-size: 30px;
+  }
 }
 
-.offcanvas-body ul li a{
+.offcanvas-body hr {
+  height: 5px;
+  background: white;
+}
+
+.offcanvas-body ul li a {
   font-family: 'Century Gothic';
   text-decoration: none;
   position: relative;
   display: inline-block;
 }
 
-.offcanvas-body ul li a::before{
+.offcanvas-body ul li a::before {
   content: '';
   position: absolute;
   width: 100%;
@@ -76,17 +86,18 @@
   background-color: #ffffff;
   left: 0;
   bottom: 0;
-  top:80%;
+  top: 80%;
   transform-origin: left;
   transform: scaleX(0);
   transition: transform .3s ease-in-out;
 }
 
-.offcanvas-body ul li a:hover::before{
+.offcanvas-body ul li a:hover::before {
   color: #be8c21;
   transform-origin: left;
   transform: scaleX(1);
 }
+
 .offcanvas-body {
   display: flex;
   align-items: center;

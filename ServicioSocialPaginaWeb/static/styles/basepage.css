@@ -158,6 +158,10 @@
   margin: 5%;
 
 }
+div .item-footer{
+  padding-top: 50px;
+  padding-bottom: 40px;
+}
 
 .img_arrow_right_news {
   width: 30px;

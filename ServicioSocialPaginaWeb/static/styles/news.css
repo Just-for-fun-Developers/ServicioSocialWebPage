@@ -1,10 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Sofia+Sans:ital,wght@1,300&display=swap');
+
+/* Encabezado info news */
+body .news-font {
+    font-family: 'Poppins', sans-serif;
+}
+
+.mask-about {
+    height: 100%;
+}
+
+.imagen-principal {
+    background-image: url("../images/news_1.jfif");
+
+    background-repeat: repeat-x;
+    height: 700px;
+    width: 100%;
+
+    background-position: center;
+}
+
+.contenedor-texto {
+    height: 700px;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+div .texto-margen {
+
+    padding-top: 150px;
+    height: 700px;
+    padding-bottom: 100px;
+}
+
+.imagen-principal-izq {
+    color: white;
+    padding-top: 140px;
+    font-size: 55px;
+    text-align: center;
+    border-right: 2px solid white;
+}
+
+.imagen-principal-der {
+    color: white;
+    padding-top: 150px;
+    font-size: 25px;
+    text-align: center;
+}
+
+
 /* div container */
-.container .new-page{
+.container .new-page {
     margin-top: 30px;
 }
 
 /* div events */
-.events a{
+.events {
+    font-family: 'Sofia Sans', sans-serif;
+}
+
+.events a {
     text-decoration: none;
 }
 
@@ -27,7 +81,7 @@ div .news {
     border: none;
     background: #efefef;
     width: 100%;
-    
+
     margin-left: auto;
     margin-right: auto;
     transition: .5s ease;
@@ -35,21 +89,40 @@ div .news {
 
 
 
+
+
 div .news:hover {
     background: #dedede;
 }
 
+/* new main */
+div .card-body-main {
+    height: 400px;
+}
 
+/* new normal */
+div .new-normal {
+    height: 400px;
+}
+
+/* div card-media-main */
+.news .card-media-main {
+    height: 400px;
+
+    overflow: hidden;
+}
 
 
 /* div card-media */
 .news .card-media {
-    
+    height: 300px;
+    width: 100%;
     overflow: hidden;
 }
 
-.card-image {
+div .card-image {
     width: 100%;
+    height: 100%;
     transition: transform .5s ease;
 }
 
@@ -59,6 +132,7 @@ div .news:hover .card-image {
 
 /* div card-body */
 .news .card-body {
+    height: 80%;
     padding-top: 48px;
     padding-left: 32px;
     padding-right: 32px;
@@ -67,6 +141,7 @@ div .news:hover .card-image {
 
 .card-body a {
     text-decoration: none;
+    font-weight: bold;
     color: black;
     background-image: linear-gradient(black, black);
     background-position: 0% 100%;
@@ -107,4 +182,11 @@ div .news:hover a {
     width: 100px;
     margin-left: auto;
     margin-right: auto;
+}
+
+/* new image in news */
+
+div .new-image {
+    margin-top: 50px;
+    margin-bottom: 50px;
 }

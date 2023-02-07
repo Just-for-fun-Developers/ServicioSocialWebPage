@@ -4,6 +4,8 @@ from flask_login import current_user, login_required
 from ServicioSocialPaginaWeb import db
 from ServicioSocialPaginaWeb.models import NewsPost, NewsEvent
 from ServicioSocialPaginaWeb.page_posts.forms import NewsPostForm, NewsEventForm
+from ServicioSocialPaginaWeb.page_posts.image_handler import add_profile_pic
+import time
 
 news_posts = Blueprint('news_posts', __name__)
 
@@ -14,14 +16,22 @@ def create_post():
     form = NewsPostForm()
 
     if form.validate_on_submit():
+        prefix_img = time.strftime("%Y%m%d-%H%M%S")
+        print(form.image1.data)
+        print(form.title.data)
+        img = add_profile_pic(form.image1.data, prefix_img)
         news_post = NewsPost(title=form.title.data,
-                            text = form.text.data,
-                            user_id=current_user.id)
+                             description=form.description.data,
+                             imagen1=img,
+                             text=form.text.data,
+                             user_id=current_user.id)
         db.session.add(news_post)
         db.session.commit()
-        flash('News Post Created!')
-        return redirect(url_for('core.index'))
+        
+        
+        return redirect(url_for('services.news'))
     return render_template('create_post.html', form=form)
+
 
 #CREATE EVENT
 @news_posts.route('/create_event', methods=['GET', 'POST'])
@@ -37,7 +47,7 @@ def create_event():
         db.session.add(news_event)
         db.session.commit()
         
-        return redirect(url_for('core.index'))
+        return redirect(url_for('services.news'))
     return render_template('create_event.html', form=form)
 
 #NEWS EVENT (VIEW)
@@ -66,7 +76,12 @@ def update(news_post_id):
     form = NewsPostForm()
 
     if form.validate_on_submit():
+        if form.image1.data:
+            prefix_img = time.strftime("%Y%m%d-%H%M%S")
+            img = add_profile_pic(form.image1.data, prefix_img)
+            news_post.image1 = img    
         news_post.title = form.title.data
+        news_post.description = form.description.data
         news_post.text = form.text.data
                         
         db.session.commit()
@@ -74,6 +89,7 @@ def update(news_post_id):
         return redirect(url_for('news_posts.news_post', news_post_id=news_post.id))
     elif request.method == 'GET':
         form.title.data = news_post.title
+        form.description.data = news_post.description
         form.text.data = news_post.text
         print("herhehrehr")
     return render_template('create_post.html', title='Updating', form=form)
@@ -118,7 +134,7 @@ def delete_post(news_post_id):
     db.session.delete(news_post)
     db.session.commit()
     flash('News Post Deleted!')
-    return redirect(url_for('core.index'))
+    return redirect(url_for('services.news'))
 
 #DELETE EVENT
 @news_posts.route('/event/<int:news_event_id>/delete', methods=['GET', 'POST'])
@@ -132,4 +148,4 @@ def delete_event(news_event_id):
     db.session.delete(news_event)
     db.session.commit()
     flash('News Post Deleted!')
-    return redirect(url_for('core.index'))
+    return redirect(url_for('services.news'))
