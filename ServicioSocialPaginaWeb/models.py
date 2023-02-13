@@ -42,7 +42,7 @@ class NewsPost(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     date = db.Column(db.DateTime , nullable=False, default=datetime.utcnow)
     title = db.Column(db.String(140), nullable=False)
-    image1 = db.Column(db.String(64), nullable=False, default='default_profile.png')
+    image1 = db.Column(db.LargeBinary)
     description = db.Column(db.Text, nullable=False)
     text = db.Column(db.Text, nullable=False)
 

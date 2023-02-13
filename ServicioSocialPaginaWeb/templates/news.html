@@ -4,13 +4,13 @@
 <!-- <div class="separador"></div> -->
 
 <main class="my-3 news-font">
-  <div class="imagen-principal mask-about">
-    <div class="contenedor-texto">
-      <div class="row texto-margen justify-content-center">
-        <div class="col-md-4 imagen-principal-izq">
+  <div class="imagen-principal-new">
+    <div class="contenedor-texto-new">
+      <div class="row texto-margen-new justify-content-center">
+        <div class="col-md-4 imagen-principal-izq-new">
           Noticias de la Subunidad de Servicio Social
         </div>
-        <div class="col-md-4 imagen-principal-der">
+        <div class="col-md-4 imagen-principal-der-new">
           Harvard is at the frontier of academic and intellectual discovery. Those who venture here—to learn, research,
           teach, work, and grow—join nearly four centuries of students and scholars in the pursuit of truth, knowledge,
           and a better world.
@@ -37,11 +37,11 @@
         </a>
         {% endfor %}
       </div>
-
+      {% set posts = list(zip(data_urls, news_posts.items)) %}
       <div class="col-md-9">
 
-        {% if news_posts.items[0] %}
-        {% set post = news_posts.items[0]%}
+        {% if posts[0] %}
+        {% set data_url, post = posts[0]%}
         <div class="row my-3 justify-content-md-center">
 
           <div class="col">
@@ -50,8 +50,7 @@
                 <div class="col-md-7 card-media-main">
                   <!-- <img src="https://picsum.photos/600/300" class="img-fluid rounded-start card-image" alt="..."> -->
                   <a href="{{url_for('news_posts.news_post', news_post_id=post.id)}}">
-                    <img src="{{ url_for('static',filename='image_news/'+post.image1) }}"
-                      class="img-fluid rounded-start card-image" alt="...">
+                    <img src='{{ data_url}}' class="img-fluid rounded-start card-image" alt="...">
                   </a>
                 </div>
 
@@ -77,14 +76,14 @@
         </div>
         {% endif %}
         <div class="row my-3 justify-content-md-center">
-          {% for post in news_posts.items[1:] %}
+          {% for data_url, post in posts[1:] %}
 
           <div class="col-md-6 my-3">
 
             <div class="card news">
               <div class="card-media">
                 <a href="{{url_for('news_posts.news_post', news_post_id=post.id)}}">
-                  <img src="{{ url_for('static',filename='image_news/'+post.image1) }}" class="card-image" alt="...">
+                  <img src="{{ data_url }}" class="card-image" alt="...">
                 </a>
 
               </div>
