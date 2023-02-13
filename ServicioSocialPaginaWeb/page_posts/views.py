@@ -6,6 +6,7 @@ from ServicioSocialPaginaWeb.models import NewsPost, NewsEvent
 from ServicioSocialPaginaWeb.page_posts.forms import NewsPostForm, NewsEventForm
 from ServicioSocialPaginaWeb.page_posts.image_handler import add_profile_pic
 import time
+import base64
 
 news_posts = Blueprint('news_posts', __name__)
 
@@ -16,10 +17,11 @@ def create_post():
     form = NewsPostForm()
 
     if form.validate_on_submit():
-        prefix_img = time.strftime("%Y%m%d-%H%M%S")
-        print(form.image1.data)
-        print(form.title.data)
-        img = add_profile_pic(form.image1.data, prefix_img)
+        # prefix_img = time.strftime("%Y%m%d-%H%M%S")
+        # print(form.image1.data)
+        # print(form.title.data)
+        # img = add_profile_pic(form.image1.data, prefix_img)
+        img = form.image1.data.read()
         news_post = NewsPost(title=form.title.data,
                              description=form.description.data,
                              imagen1=img,
@@ -50,20 +52,25 @@ def create_event():
         return redirect(url_for('services.news'))
     return render_template('create_event.html', form=form)
 
-#NEWS EVENT (VIEW)
+#NEWS POST (VIEW)
 @news_posts.route('/post/<int:news_post_id>')
 def news_post(news_post_id):
     news_post = NewsPost.query.get_or_404(news_post_id)
-    return render_template('news_post.html', title=news_post.title, date=news_post.date, post=news_post)
+    binary_data = news_post.image1
+    base64_data = base64.b64encode(binary_data).decode("utf-8")
+    data_url = "data:image/jpeg;base64," + base64_data
 
-#BLOG POST (VIEW)
+    return render_template('news_post.html', data_url=data_url, post=news_post)
+
+#NEWS EVENT (VIEW)
 @news_posts.route('/event/<int:news_event_id>')
 def news_event(news_event_id):
     news_event = NewsEvent.query.get_or_404(news_event_id)
+    
     return render_template('news_event.html', title=news_event.title, date=news_event.date, event=news_event)
 
 
-#UPDATE
+#UPDATE POST
 @news_posts.route('/<int:news_post_id>/update', methods=['GET', 'POST'])
 @login_required
 def update(news_post_id):
@@ -77,21 +84,21 @@ def update(news_post_id):
 
     if form.validate_on_submit():
         if form.image1.data:
-            prefix_img = time.strftime("%Y%m%d-%H%M%S")
-            img = add_profile_pic(form.image1.data, prefix_img)
-            news_post.image1 = img    
+            img = form.image1.data.read()
+            news_post.image1 = img
+              
         news_post.title = form.title.data
         news_post.description = form.description.data
         news_post.text = form.text.data
                         
         db.session.commit()
-        flash('News Post Updated!')
+        
         return redirect(url_for('news_posts.news_post', news_post_id=news_post.id))
     elif request.method == 'GET':
         form.title.data = news_post.title
         form.description.data = news_post.description
         form.text.data = news_post.text
-        print("herhehrehr")
+        
     return render_template('create_post.html', title='Updating', form=form)
 
 #UPDATE EVENT
@@ -121,7 +128,7 @@ def update_event(news_event_id):
         print("herhehrehr")
     return render_template('create_event.html', title='Updating', form=form)
 
-#DELETE
+#DELETE POST
 
 @news_posts.route('/<int:news_post_id>/delete', methods=['GET', 'POST'])
 @login_required

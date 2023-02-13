@@ -8,7 +8,7 @@
             <h2>Written by: {{post.author.username}}</h2>
             <h3>Published: {{post.date.strftime('%B %d, %Y')}}</h3>
             <div class="new-image">
-                <img align="center" src="{{url_for('static', filename='image_news/'+post.image1)}}">
+                <img align="center" class="new-img" src="{{data_url}}">
             </div>
             <div>
                 <p>{{post.text}}</p>
