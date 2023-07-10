@@ -14,7 +14,7 @@ app.config['SECRET_KEY'] = 'mysecret'
 #### DATABASE SETUP #################
 #####################################
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2://serviciosocialwebpage_user:GkCpWJYIPr3X1NyAw5Q6foLfaGbKZUIa@dpg-cf21o694reb5o43tomf0-a.oregon-postgres.render.com:5432/serviciosocialwebpage'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://konosuba:konosuba@137.184.70.12/ssocial_db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
